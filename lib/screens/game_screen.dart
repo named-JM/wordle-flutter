@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordle/utils/game_provider.dart';
 import 'package:wordle/widets/game_keyboard.dart';
 
 class GameScreen extends StatefulWidget {
@@ -9,6 +10,15 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  WordleGame _game = WordleGame();
+  // late String word;
+
+  @override
+  void initState() {
+    super.initState();
+    WordleGame.initGame();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +37,7 @@ class _GameScreenState extends State<GameScreen> {
           ),
           SizedBox(height: 20),
           //structure
-          GameKeyboard(),
+          GameKeyboard(_game),
         ],
       ),
     );
